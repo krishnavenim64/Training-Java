@@ -1,0 +1,36 @@
+import java.util.*;
+import java.util.stream.*;
+
+class Animal {
+    String name;
+    String species;
+    int age;
+    int weight;
+
+    Animal(String name, String species, int age, int weight) {
+        this.name = name;
+        this.species = species;
+        this.age = age;
+        this.weight = weight;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<Animal> animals = Arrays.asList(
+            new Animal("Tatiana","Snake",98,464),
+            new Animal("Khaled","Giraffe",50,41),
+            new Animal("Alex","Leopard",6,328),
+            new Animal("Jonathan","Monkey",45,463),
+            new Animal("Stefan","Bear",100,50),
+            new Animal("Tommy","Panda",26,349)
+        );
+
+        animals.stream()
+               .filter(a -> a.weight > 100)
+               .sorted((a,b) -> b.weight - a.weight)
+               .map(a -> a.name)
+               .forEach(System.out::println);
+    }
+}
